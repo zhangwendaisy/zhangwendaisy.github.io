@@ -4,10 +4,10 @@
   "institution": "国防科技大学",
   "department": "气象海洋学院",
   "title": "",
-  "email": "",
+  "email": "zhangwen06@nudt.edu.cn",
   "orcid": "",
   "scholar_url": "",
-  "photo_url": "",
+  "photo_url": "./assets/profile-placeholder.svg",
   "research_interests": [
     "目标定向与阵列信号处理",
     "水下目标识别",
@@ -26,5 +26,6 @@
     "Target tracking and source localization",
     "Intelligent sonar and machine learning",
     "Underwater signal processing and acoustic inversion"
-  ]
+  ],
+  "website_url": "https://zhangwendaisy.github.io/zhangwen06.github.io/"
 }
