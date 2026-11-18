@@ -484,7 +484,7 @@
     "title": "Transformer-based joint two-dimensional range and depth synchronous localization of underwater acoustic target",
     "authors": "Zikun Meng, Wen Zhang,Jian Shi, Yan Liu, Shuo Liu, and Qiankun Yu",
     "year": 2026,
-    "publication": "The Journal of the Acoustical Society of America",
+    "publication": "The Journal of the Acoustical Society of America, 2026, Vol.160: 2480–2494.",
     "doi": "10.1121/10.0046657",
     "url": "https://pubs.aip.org/asa/jasa/article/160/3/2480/3405069/Transformer-based-joint-two-dimensional-range-and",
     "description": "针对复杂浅海环境下传统匹配场定位易受环境失配影响的问题，提出基于Transformer的水声目标距离—深度二维联合定位方法。利用KRAKEN水声模型生成仿真数据进行训练，并采用Elba-93真实海试数据进行测试，同时与Bartlett、MVDR、SA-MVDR、1D-CNN和MLP等方法进行对比。结果表明，所提出模型的误差显著低于本文设置下的传统匹配场及其他神经网络基线。进一步开展单水听器实验后发现，经全阵列仿真数据预训练的模型仅使用单个水听器测试时，二维定位误差仍可保持在较低水平，为稀疏阵列及单水听器水声定位提供了新的研究思路。",
