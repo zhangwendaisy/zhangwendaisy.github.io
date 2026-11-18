@@ -1,185 +1,310 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>成果录入工具 · 张文学术主页</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manage Records | Zhang Wen</title>
 <style>
-:root{--ink:#143846;--teal:#116e72;--soft:#edf5f2;--line:#dce7e2}
-*{box-sizing:border-box}
-body{margin:0;background:#f2f6f4;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
-main{max-width:1030px;padding:30px 20px 80px;margin:auto}
-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
-nav a{color:var(--teal);font-weight:700;text-decoration:none}
-h1{font-size:31px;margin-bottom:6px}h2{font-size:19px;margin:0 0 16px}p{line-height:1.7}
-.muted{color:#6c838a;font-size:13px}
-.notice{background:#e5f2ee;border-left:4px solid var(--teal);padding:14px 18px;line-height:1.85;font-size:13px;border-radius:5px;margin:24px 0}
-.section{background:#fff;border:1px solid var(--line);padding:24px;border-radius:14px;margin-top:19px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-label{font-size:12px;font-weight:650;display:flex;flex-direction:column;gap:6px}
-input,textarea,select{padding:11px 12px;font-size:14px;background:#fff;border:1px solid #cbdcd8;border-radius:8px;width:100%;color:var(--ink)}
-textarea{resize:vertical;min-height:85px}label.wide{grid-column:1 / -1}
-button{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:11px 17px;font-weight:700;cursor:pointer}
-button.secondary{background:#e7f1ee;color:var(--teal)}
-button.light{background:#fff;border:1px solid #d2e4df;color:var(--teal);padding:7px 10px;font-size:12px}
-button.danger{background:#fff1ee;color:#a74635;border:1px solid #ffd9d1;padding:7px 10px;font-size:12px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:15px}
-#status{font-size:13px;color:#3d7680;font-weight:600}
-.list{max-height:500px;overflow:auto;border:1px solid var(--line);border-radius:9px}
-.item{display:flex;gap:12px;justify-content:space-between;padding:12px 15px;border-bottom:1px solid var(--line)}
-.item:last-child{border-bottom:0}.item strong{font-size:12px;line-height:1.55}.item span{font-size:11px;color:#84959a;display:block;margin-top:5px}
-.item-actions{display:flex;flex-shrink:0;gap:7px;align-items:center}
-input[type=file]{background:#f6faf8}
-@media(max-width:670px){.grid{grid-template-columns:1fr}.item{display:block}.item-actions{margin-top:10px}}
+:root { color-scheme: light; --link:#175c87; --border:#dce2e7; --muted:#586874; }
+* { box-sizing:border-box; }
+body { margin:0; background:#fff; color:#24313b; font:14px/1.6 Arial, Helvetica, sans-serif; }
+main { max-width:900px; padding:30px 24px 70px; margin:auto; }
+a { color:var(--link); } h1 {font-size:26px;margin:8px 0 5px} h2 {font-size:19px;margin:0 0 15px;}
+p,li {line-height:1.7} .muted {color:var(--muted);font-size:13px}
+.notice {border-left:3px solid #175c87; background:#f4f8fa;padding:12px 15px;margin:22px 0}
+section {border-top:1px solid var(--border);margin:27px 0 0;padding:23px 0 0}
+.fields {display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+label {display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:600}
+label.wide{grid-column:1/-1}
+input,textarea,select{background:#fff;border:1px solid #c9d4db;border-radius:4px;padding:9px 10px;font:14px Arial,sans-serif;width:100%}
+textarea{min-height:75px;resize:vertical}
+button{border:1px solid #174f71;border-radius:4px;background:#175c87;color:#fff;padding:8px 12px;font-weight:600;cursor:pointer}
+button.secondary{background:white;color:var(--link);border-color:#a9bfcd}
+button.delete{background:white;color:#a03a35;border-color:#e2b9b6}
+button:disabled{opacity:.5;cursor:not-allowed}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:13px 0}
+.section-help{color:#6f7d85;font-size:12px;margin-top:0}
+#status {display:block;margin:13px 0;color:#176272;font-size:12.5px;min-height:18px}
+.record {padding:10px 2px;border-bottom:1px solid #e6ebee;display:flex;gap:13px;justify-content:space-between;align-items:center}
+.record-title{font-size:13px;font-weight:600;display:block}
+.record-meta{font-size:12px;color:#6f818b;display:block;margin-top:4px}
+.record-actions{display:flex;gap:6px;flex-shrink:0}
+.record-actions button{padding:5px 9px;font-size:11px}
+#records{max-height:470px;overflow:auto;border-top:1px solid #e6ebee}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid #eee;color:#74828b;font-size:12px}
+@media(max-width:670px){main{padding:25px 16px}.fields{grid-template-columns:1fr}.record{display:block}.record-actions{margin-top:9px}}
 </style>
 </head>
 <body>
 <main>
-<nav><a href="../index.html">← 返回学术主页</a><span class="muted">LOCAL / STATIC EDITOR</span></nav>
-<h1>学术成果录入工具</h1>
-<p class="muted">无需改 HTML。编辑成果数据后，下载 <code>works.json</code> 并上传替换 GitHub 仓库的 <code>data/works.json</code>。</p>
-<div class="notice">
-<strong>注意：</strong>这是一个仅在浏览器中工作的编辑页面，并非具有账号权限的数据库管理后台。
-数据不会自动上传到 GitHub，也不会保存到服务器。请在编辑结束后点击“下载更新后的 JSON”，
-再在 GitHub 中打开 data/works.json、点击编辑、用下载文件内容替换原内容并提交（或在本地覆盖文件后 git push）。<br>
-为防误收录，网站数据初始来源于你提供的 Word 文档；请在公开发布前核实作者、题名、DOI、专利号。
+<a href="../index.html">← Back to academic homepage</a>
+<h1>Academic Records Editor</h1>
+<p class="muted">Manage publications, books, competition awards, and academic service. All controls are local to your browser.</p>
+<div class="notice"><strong>Publishing:</strong> This page does not write directly to GitHub.
+Download each modified JSON file and replace its matching file in the repository, then select <strong>Commit changes</strong>.
+Only reviewed and approved information should be published.</div>
+
+<section>
+<h2>1. Load existing data</h2>
+<div class="controls"><button type="button" class="secondary" id="reload">Load files from website</button></div>
+<div class="fields">
+  <label>Import existing works.json<input type="file" id="import-works" accept=".json,application/json"></label>
+  <label>Import existing academic.json<input type="file" id="import-academic" accept=".json,application/json"></label>
+  <label>Import existing profile.json<input type="file" id="import-profile" accept=".json,application/json"></label>
 </div>
-<section class="section">
-<h2>① 加载成果数据</h2>
-<p class="muted">从网站打开时会尝试自动加载现有数据；本地直接双击编辑页时，请手动选择 <code>data/works.json</code> 文件。</p>
-<div class="actions">
-  <button id="load-online" class="secondary" type="button">载入网站现有数据</button>
-  <input type="file" id="pick-file" accept=".json,application/json" aria-label="选择 works.json 文件" style="max-width:390px">
-</div>
+<p class="section-help">Files loaded from the website appear in the editor automatically when available.</p>
 </section>
-<section class="section">
-<h2>② 新增或修改成果</h2>
+
+<section>
+<h2>2. Edit publication or academic record</h2>
 <form id="record-form">
-<div class="grid">
-  <label>成果类型<select name="type" required>
-    <option>期刊论文</option><option>会议论文</option><option>专利</option>
-  </select></label>
-  <label>年份<input type="number" name="year" min="1950" max="2100" placeholder="例如 2026"></label>
-  <label class="wide">成果名称 / Title<input type="text" name="title" required placeholder="请填写准确题名"></label>
-  <label class="wide">作者 / Authors<input type="text" name="authors" placeholder="建议使用论文原文的作者顺序"></label>
-  <label>研究类别<input type="text" name="category" placeholder="例如 目标识别"></label>
-  <label>DOI<input type="text" id="doi" name="doi" placeholder="10.xxxx/xxxx"></label>
-  <label class="wide">期刊、会议或专利类型<input type="text" name="publication" placeholder="例如 Journal of Marine Science and Engineering, 2022"></label>
-  <label>专利申请号<input type="text" name="application_no" placeholder="专利才填写"></label>
-  <label>文章链接<input type="url" name="url" placeholder="https://doi.org/..."></label>
-  <label class="wide">研究内容或技术贡献<textarea name="description" placeholder="介绍主要方法与贡献，避免编造无法核实的数值结论。"></textarea></label>
+<div class="fields">
+ <label>Record type
+   <select id="kind" name="kind">
+    <option value="journal">Journal article</option>
+    <option value="conference">Conference paper</option>
+    <option value="patent">Patent (saved in data, not displayed on main page)</option>
+    <option value="book">Book / monograph</option>
+    <option value="award">Competition award</option>
+    <option value="service">Academic service / reviewer role</option>
+   </select>
+ </label>
+ <label>Year (optional)<input type="number" name="year" min="1900" max="2100" placeholder="e.g., 2026"></label>
+ <label class="wide">Title / competition / service role<input name="title" required placeholder="Official title"></label>
+ <label class="wide">Authors (papers / books)<input name="authors" placeholder="Keep the official author order"></label>
+ <label class="wide">Journal, conference, publisher, competition or organization<input name="publication"></label>
+ <label>Research category (optional)<input name="category" placeholder="e.g., Acoustic source localization"></label>
+ <label>DOI (papers only)<input name="doi" placeholder="10.xxxx/xxxx"></label>
+ <label>Patent application number (patents only)<input name="application_no"></label>
+ <label>Relevant public URL<input name="url" type="url" placeholder="https://"></label>
+ <label class="wide">Notes / award details / term of service<textarea name="description"></textarea></label>
 </div>
-<div class="actions">
-  <button type="submit" id="save">添加到列表</button>
-  <button type="button" class="secondary" id="lookup-doi">根据 DOI 自动补全题录</button>
-  <button type="reset" class="secondary" id="clear-form">清空表单</button>
-  <span id="status"></span>
+<div class="controls">
+ <button id="save-record" type="submit">Add record</button>
+ <button id="doi-lookup" type="button" class="secondary">Look up DOI</button>
+ <button id="cancel-record" type="button" class="secondary">Clear form</button>
 </div>
 </form>
 </section>
-<section class="section">
-<h2>③ 检查并导出</h2>
-<p class="muted">当前 <strong id="count">0</strong> 条成果。可在下方编辑或删除条目；完成后下载 JSON。</p>
-<div id="record-list" class="list"></div>
-<div class="actions"><button id="download" type="button">下载更新后的 works.json</button></div>
+
+<section>
+<h2>3. Current records</h2>
+<label>Show record type
+<select id="list-kind">
+ <option value="all">All records</option>
+ <option value="journal">Journal articles</option>
+ <option value="conference">Conference papers</option>
+ <option value="patent">Patents (stored)</option>
+ <option value="book">Books & monographs</option>
+ <option value="award">Competition awards</option>
+ <option value="service">Academic service</option>
+</select>
+</label>
+<p class="section-help"><span id="record-count">0</span> records shown.</p>
+<div id="records"></div>
+<div class="controls">
+ <button type="button" id="download-works">Download works.json</button>
+ <button type="button" id="download-academic">Download academic.json</button>
+</div>
 </section>
+
+<section>
+<h2>4. Profile and research interests</h2>
+<form id="profile-form">
+<div class="fields">
+  <label>English name<input name="name_en"></label>
+  <label>Native-language name<input name="name_zh"></label>
+  <label>Institution (English)<input name="institution_en"></label>
+  <label>Department (English)<input name="department_en"></label>
+  <label class="wide">Short biography (English)<textarea name="biography_en"></textarea></label>
+  <label>Email (only if approved for publication)<input name="email" type="email"></label>
+  <label>ORCID<input name="orcid" placeholder="0000-0000-0000-0000"></label>
+  <label class="wide">Google Scholar URL<input name="scholar_url" type="url"></label>
+  <label class="wide">Research interests (English, one per line)<textarea name="research_interests_en"></textarea></label>
+</div>
+<div class="controls">
+ <button type="submit" class="secondary">Apply profile changes</button>
+ <button type="button" id="download-profile">Download profile.json</button>
+</div>
+</form>
+</section>
+
+<span role="status" aria-live="polite" id="status"></span>
+<footer>Academic homepage maintenance · JSON files must be committed to GitHub to publish changes.</footer>
 </main>
+
 <script>
 "use strict";
-let records=[],editingIndex=-1;
-const el = (id)=>document.getElementById(id);
-const form=el("record-form");
-const sanitize=(s)=>String(s??"");
-function status(text){el("status").textContent=text}
-function validate(records){
- if(!Array.isArray(records)||!records.every(w=>w&&typeof w.title==="string"&&typeof w.type==="string"))
-   throw Error("数据格式错误：请加载网站导出的 works.json 数组");
+let works=[], academic={books:[], awards:[], services:[]},profile={}, editing=null;
+const $=(id)=>document.getElementById(id);
+const form=$("record-form"),profileForm=$("profile-form");
+const labelForKind={journal:"Journal article",conference:"Conference paper",patent:"Patent",
+ book:"Book / monograph",award:"Competition award",service:"Academic service"};
+const workType={journal:"期刊论文",conference:"会议论文",patent:"专利"};
+const extrasKey={book:"books",award:"awards",service:"services"};
+function status(message){$("status").textContent=message}
+function ensureData(data,which){
+ if(which==="works"){
+   if(!Array.isArray(data))throw Error("works.json must contain a JSON array.");
+   works=data;
+ }else if(which==="academic"){
+   if(!data || typeof data!=="object" || Array.isArray(data))throw Error("academic.json must be a JSON object.");
+   academic={books:Array.isArray(data.books)?data.books:[],awards:Array.isArray(data.awards)?data.awards:[],services:Array.isArray(data.services)?data.services:[]};
+ }else{if(!data || typeof data!=="object" || Array.isArray(data))throw Error("profile.json must be an object."); profile=data; fillProfile();}
+ renderRecords();
 }
-function setRecords(newRecords){
- validate(newRecords);records=newRecords;editingIndex=-1;form.reset();el("save").textContent="添加到列表";
- status(`已载入 ${records.length} 条`);refreshList();
-}
-function refreshList(){
- el("count").textContent=records.length;
- const root=el("record-list");root.innerHTML="";
- for(let i=0;i<records.length;i++){
-   const w=records[i];
-   const row=document.createElement("div");row.className="item";
-   const details=document.createElement("div");
-   const title=document.createElement("strong");title.textContent=`${i+1}. ${w.title}`;
-   const meta=document.createElement("span");meta.textContent=`${w.type} · ${w.year || "待核年份"} · ${w.category||""}`;
-   details.append(title,meta);
-   const actions=document.createElement("div");actions.className="item-actions";
-   const edit=document.createElement("button");edit.textContent="编辑";edit.className="light";edit.type="button";
-   edit.onclick=()=>editRecord(i);
-   const del=document.createElement("button");del.textContent="删除";del.className="danger";del.type="button";
-   del.onclick=()=>{if(confirm("确认删除这条成果吗？")){records.splice(i,1);refreshList();status("已删除，请下载JSON以保存更改")}};
-   actions.append(edit,del);row.append(details,actions);root.append(row);
- }
-}
-function editRecord(i){
- editingIndex=i;const rec=records[i];form.reset();
- for(const field of form.querySelectorAll("[name]")){
-   field.value = rec[field.name] ?? "";
- }
- el("save").textContent="保存修改";form.scrollIntoView({behavior:"smooth",block:"center"});
- status(`正在编辑第 ${i+1} 项`);
-}
-async function onlineLoad(){
+async function loadOnline(){
  try{
-   const response=await fetch("../data/works.json",{cache:"no-store"});
-   if(!response.ok)throw Error("HTTP "+response.status);
-   setRecords(await response.json());
- }catch(error){status("无法自动读取，请点击“选择文件”加载 works.json。")}
+   const keys=["works","academic","profile"];
+   const data=await Promise.all(keys.map(async key=>{
+     const response=await fetch("../data/"+key+".json",{cache:"no-store"});
+     if(!response.ok)throw Error(key+".json is unavailable");
+     return response.json();
+   }));
+   keys.forEach((key,i)=>ensureData(data[i],key));
+   status("Loaded data from the published website.");
+ }catch(error){
+   status("Automatic loading failed. Import the JSON files above, or open this editor through GitHub Pages.");
+ }
 }
-el("load-online").addEventListener("click",onlineLoad);
-el("pick-file").addEventListener("change",async(e)=>{
- const file=e.target.files[0];if(!file)return;
- try{setRecords(JSON.parse(await file.text()))}
- catch(error){status("文件格式有误："+error.message)}
-});
-form.addEventListener("submit",(event)=>{
+for(const kind of ["works","academic","profile"]){
+ $("import-"+kind).addEventListener("change",async(e)=>{
+   const file=e.target.files?.[0];if(!file)return;
+   try{ensureData(JSON.parse(await file.text()),kind);status("Imported "+file.name);}
+   catch(error){status("Import failed: "+error.message)}
+ });
+}
+function getItems(kind){
+ if(workType[kind])return works;
+ return academic[extrasKey[kind]];
+}
+function matchesKind(item,kind){
+ if(workType[kind])return item.type===workType[kind];
+ return true;
+}
+function allRecords(){
+ const all=[];
+ for(const item of works){
+   const kind=Object.keys(workType).find(k=>workType[k]===item.type) || "journal";
+   all.push({kind,item,ref:works});
+ }
+ for(const kind of ["book","award","service"]){
+   for(const item of academic[extrasKey[kind]])all.push({kind,item,ref:academic[extrasKey[kind]]});
+ }
+ return all;
+}
+function renderRecords(){
+ const root=$("records");root.replaceChildren();
+ const choice=$("list-kind").value;
+ const entries=allRecords().filter(rec=>choice==="all"||rec.kind===choice);
+ entries.sort((a,b)=>(Number(b.item.year)||0)-(Number(a.item.year)||0));
+ $("record-count").textContent=entries.length;
+ for(const rec of entries){
+   const row=document.createElement("div");row.className="record";
+   const left=document.createElement("div");
+   const title=document.createElement("span");title.className="record-title";title.textContent=rec.item.title||"Untitled";
+   const meta=document.createElement("span");meta.className="record-meta";
+   meta.textContent=labelForKind[rec.kind]+" · "+(rec.item.year||"Year unknown");
+   left.append(title,meta);
+   const actions=document.createElement("div");actions.className="record-actions";
+   const edit=document.createElement("button");edit.type="button";edit.className="secondary";edit.textContent="Edit";
+   edit.onclick=()=>editRecord(rec);
+   const del=document.createElement("button");del.type="button";del.className="delete";del.textContent="Delete";
+   del.onclick=()=>{if(confirm("Delete this record?")){const i=rec.ref.indexOf(rec.item);if(i>=0)rec.ref.splice(i,1);if(editing?.item===rec.item)clearForm();renderRecords();status("Record deleted. Download the matching JSON file to save changes.")}};
+   actions.append(edit,del);row.append(left,actions);root.append(row);
+ }
+ if(!entries.length){const p=document.createElement("p");p.className="muted";p.textContent="No records in this category.";root.append(p)}
+}
+function editRecord(rec){
+ editing=rec;form.reset();
+ form.elements.kind.value=rec.kind;
+ for(const field of ["title","authors","year","publication","category","doi","application_no","url","description"]){
+   form.elements[field].value=rec.item[field]??"";
+ }
+ $("save-record").textContent="Save changes";
+ form.scrollIntoView({behavior:"smooth",block:"start"});
+ status("Editing existing record. Changes stay in your browser until JSON export.");
+}
+function clearForm(){editing=null;form.reset();$("save-record").textContent="Add record"}
+$("cancel-record").onclick=()=>{clearForm();status("Form cleared.")};
+$("list-kind").onchange=renderRecords;
+form.onsubmit=(event)=>{
  event.preventDefault();
- const raw=Object.fromEntries(new FormData(form).entries());
- const record={id: editingIndex>=0 ? records[editingIndex].id : "entry-"+Date.now().toString(36),
-  type:raw.type,category:raw.category||"未分类",title:raw.title.trim(),
-  authors:raw.authors.trim(),year:raw.year?Number(raw.year):null,
-  publication:raw.publication.trim(),doi:raw.doi.trim().replace(/^https?:\/\/(?:dx\.)?doi\.org\//i,""),
-  url:raw.url.trim(),application_no:raw.application_no.trim(),
-  description:raw.description.trim(),source:"手工录入",verified:false};
- if(!record.title){status("请填写题名");return}
- if(editingIndex>=0)records[editingIndex]=record;else records.unshift(record);
- editingIndex=-1;form.reset();el("save").textContent="添加到列表";
- refreshList();status("条目已加入浏览器列表，请记得下载 JSON 并上传 GitHub。");
-});
-el("clear-form").onclick=()=>{editingIndex=-1;el("save").textContent="添加到列表";status("")};
-el("download").onclick=()=>{
- if(!records.length && !confirm("当前成果列表为空，确认导出空JSON吗？"))return;
- const file=new Blob([JSON.stringify(records,null,2)],{type:"application/json;charset=utf-8"});
- const url=URL.createObjectURL(file),a=document.createElement("a");
- a.href=url;a.download="works.json";document.body.append(a);a.click();a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1000);
- status("文件已下载。请用此文件内容替换仓库 data/works.json 的文本并提交，网站才会更新。");
+ const data=Object.fromEntries(new FormData(form).entries());
+ const kind=data.kind;
+ const old=editing?.item;
+ const rec={...(old||{}),
+   id:old?.id||("entry-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,7)),
+   title:(data.title||"").trim(),
+   authors:(data.authors||"").trim(),
+   year:data.year?Number(data.year):null,
+   publication:(data.publication||"").trim(),
+   category:(data.category||"").trim(),
+   doi:(data.doi||"").trim().replace(/^https?:\/\/(?:dx\.)?doi\.org\//i,""),
+   application_no:(data.application_no||"").trim(),
+   url:(data.url||"").trim(),
+   description:(data.description||"").trim()
+ };
+ if(!rec.title){status("Please enter a title or role.");return}
+ if(workType[kind])rec.type=workType[kind];
+ else delete rec.type;
+ if(editing){
+   const index=editing.ref.indexOf(editing.item);
+   if(index>=0)editing.ref.splice(index,1);
+ }
+ if(workType[kind])works.push(rec);else academic[extrasKey[kind]].push(rec);
+ const exportName=workType[kind]?"works.json":"academic.json";
+ clearForm();renderRecords();
+ status("Record saved locally. Download "+exportName+" and commit it to GitHub.");
 };
-el("lookup-doi").onclick=async()=>{
- const doi=el("doi").value.trim().replace(/^https?:\/\/(?:dx\.)?doi\.org\//i,"");
- if(!doi){status("请先填写 DOI");return}
- status("正在尝试查询 Crossref...");
+$("doi-lookup").onclick=async()=>{
+ const doi=form.elements.doi.value.trim().replace(/^https?:\/\/(?:dx\.)?doi\.org\//i,"");
+ if(!doi){status("Enter a DOI first.");return}
+ status("Looking up DOI via Crossref...");
  try{
-   const response=await fetch("https://api.crossref.org/works/"+encodeURIComponent(doi));
-   if(!response.ok)throw Error("API "+response.status);
-   const data=(await response.json()).message;
-   if(!data || !data.title?.length)throw Error("无有效题录");
-   form.elements.title.value=data.title[0]||"";
-   form.elements.authors.value=(data.author||[]).map(a=>[a.given,a.family].filter(Boolean).join(" ")).join(", ");
-   form.elements.publication.value=(data["container-title"]||[])[0]||"";
-   const dateparts=(data.published?.["date-parts"]||data.issued?.["date-parts"]||[])[0];
-   if(dateparts?.[0])form.elements.year.value=dateparts[0];
+   const resp=await fetch("https://api.crossref.org/works/"+encodeURIComponent(doi));
+   if(!resp.ok)throw Error("Crossref returned HTTP "+resp.status);
+   const w=(await resp.json()).message;
+   form.elements.title.value=(w.title||[])[0]||"";
+   form.elements.authors.value=(w.author||[]).map(a=>[a.given,a.family].filter(Boolean).join(" ")).join(", ");
+   form.elements.publication.value=(w["container-title"]||[])[0]||"";
+   const parts=(w.published?.["date-parts"]||w.issued?.["date-parts"]||[])[0];
+   if(parts?.[0])form.elements.year.value=parts[0];
+   form.elements.kind.value=w.type==="proceedings-article"?"conference":"journal";
    form.elements.url.value="https://doi.org/"+doi;
-   form.elements.type.value=data.type==="proceedings-article"?"会议论文":"期刊论文";
-   status("已根据 Crossref 补全，请人工核对作者顺序、单位和题名。");
- }catch(error){status("自动查询未成功，仍可手动录入。"+error.message)}
+   status("Metadata filled from Crossref. Verify all authors and publication details before saving.");
+ }catch(error){status("Lookup unavailable: "+error.message)}
 };
-onlineLoad();
+function fillProfile(){
+ for(const el of profileForm.querySelectorAll("[name]")){
+   if(el.name==="research_interests_en"){
+     el.value=Array.isArray(profile.research_interests_en)?profile.research_interests_en.join("\n"):"";
+   }else{
+     el.value=profile[el.name]||"";
+   }
+ }
+}
+profileForm.onsubmit=(event)=>{
+ event.preventDefault();
+ for(const input of profileForm.querySelectorAll("[name]")){
+   profile[input.name]=input.name==="research_interests_en"
+      ?input.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean)
+      :input.value.trim();
+ }
+ status("Profile saved locally. Download profile.json to publish.");
+};
+function downloadJSON(filename,obj){
+ const blob=new Blob([JSON.stringify(obj,null,2)+"\n"],{type:"application/json;charset=utf-8"});
+ const url=URL.createObjectURL(blob);const a=document.createElement("a");
+ a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+ status("Downloaded "+filename+". Replace data/"+filename+" in your GitHub repository and commit the change.");
+}
+$("download-works").onclick=()=>downloadJSON("works.json",works);
+$("download-academic").onclick=()=>downloadJSON("academic.json",academic);
+$("download-profile").onclick=()=>downloadJSON("profile.json",profile);
+$("reload").onclick=loadOnline;
+loadOnline();
 </script>
 </body>
 </html>
