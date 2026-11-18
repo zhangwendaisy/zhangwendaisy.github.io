@@ -224,20 +224,6 @@
     "verified": false
   },
   {
-    "id": "paper-017",
-    "type": "会议论文",
-    "category": "目标定位",
-    "title": "Research on Sound Source Localization of Multiple Fixed Targets Based on Machine Learning and Distributed Arrays",
-    "authors": "Liu Shuo; Li Heng; Yu Qiankun; Zhao Yun; Zhang Wen",
-    "year": 2024,
-    "publication": "2023 International Conference on Frontiers of Ocean Science and Technology, ICFOST 2023. 2024",
-    "doi": "",
-    "url": "",
-    "description": "本文研究了一种基于机器学习和分布式阵列的多固定目标声源定位方法。在室外开阔场地，采用三线阵列采集阵列数据并计算延迟特性。然后建立并训练多个分类模型。最后利用这些模型对声源点位置进行预测，其中支持向量机（SVM）、最近邻节点（KNN）和朴素贝叶斯模型的定位精度达到100%。与传统方法相比，该方法具有三个显著优点：一是不依赖传声器通道顺序，不需要预先校准，简化了定位过程；二是能满足高精度要求，特别适用于多固定目标场景；第三，它具有增量学习的优点，随着定位次数的增加，训练集不断丰富，定位结果更加精确。",
-    "source": "用户提供的张文老师成果Word",
-    "verified": false
-  },
-  {
     "id": "paper-018",
     "type": "会议论文",
     "category": "目标定位",
@@ -490,5 +476,21 @@
     "description": "",
     "source": "用户提供的张文老师成果Word",
     "verified": false
+  },
+  {
+    "id": "paper-017",
+    "type": "期刊论文",
+    "category": "目标定位",
+    "title": "Transformer-based joint two-dimensional range and depth synchronous localization of underwater acoustic target",
+    "authors": "Zikun Meng, Wen Zhang,Jian Shi, Yan Liu, Shuo Liu, and Qiankun Yu",
+    "year": 2026,
+    "publication": "The Journal of the Acoustical Society of America",
+    "doi": "10.1121/10.0046657",
+    "url": "https://pubs.aip.org/asa/jasa/article/160/3/2480/3405069/Transformer-based-joint-two-dimensional-range-and",
+    "description": "针对复杂浅海环境下传统匹配场定位易受环境失配影响的问题，提出基于Transformer的水声目标距离—深度二维联合定位方法。利用KRAKEN水声模型生成仿真数据进行训练，并采用Elba-93真实海试数据进行测试，同时与Bartlett、MVDR、SA-MVDR、1D-CNN和MLP等方法进行对比。结果表明，所提出模型的误差显著低于本文设置下的传统匹配场及其他神经网络基线。进一步开展单水听器实验后发现，经全阵列仿真数据预训练的模型仅使用单个水听器测试时，二维定位误差仍可保持在较低水平，为稀疏阵列及单水听器水声定位提供了新的研究思路。",
+    "source": "用户提供的张文老师成果Word",
+    "verified": false,
+    "application_no": "",
+    "image_url": ""
   }
 ]
