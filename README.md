@@ -1,12 +1,14 @@
-[README.md](https://github.com/user-attachments/files/35024750/README.1.md)
+[README.md](https://github.com/user-attachments/files/35027861/README.2.md)
 # 张文老师学术主页｜运行与维护说明
 
 ## 一、网站地址
 
-- **英文成果展示主页：** [https://zhangwendaisy.github.io/zhangwen06.github.io/](https://zhangwendaisy.github.io/zhangwen06.github.io/)
-- **中文成果管理页面：** [点击进入成果管理后台](https://zhangwendaisy.github.io/zhangwen06.github.io/tools/editor.html)
-- **GitHub 代码仓库：** [zhangwendaisy/zhangwen06.github.io](https://github.com/zhangwendaisy/zhangwen06.github.io)
+- **英文成果展示主页：** [https://zhangwendaisy.github.io/](https://zhangwendaisy.github.io/)
+- **中文成果管理页面：** [点击进入成果管理后台](https://zhangwendaisy.github.io/tools/editor.html)
+- **GitHub 代码仓库：** [zhangwendaisy/zhangwendaisy.github.io](https://github.com/zhangwendaisy/zhangwendaisy.github.io)
 
+> 仓库已重命名为 `zhangwendaisy.github.io`，现使用以上短网址。之前包含仓库名称的较长项目路径不再作为正式网站入口。
+>
 > 对外展示主页保持英文；成果录入、个人信息修改和图片上传的管理页面为中文。该管理页面是浏览器端编辑器，不是带登录和数据库的服务器后台。修改后仍需下载 JSON 文件并提交到 GitHub 才能发布。
 
 ## 二、网站运行与发布
@@ -40,7 +42,7 @@ python -m http.server 8000
 
 ## 三、中文成果管理页面怎么使用
 
-直接打开：[中文成果管理页面](https://zhangwendaisy.github.io/zhangwen06.github.io/tools/editor.html)。
+直接打开：[中文成果管理页面](https://zhangwendaisy.github.io/tools/editor.html)。
 
 ### 第一步：读取已有内容
 
@@ -108,7 +110,7 @@ python -m http.server 8000
 
 随后：
 
-1. 打开 [GitHub 仓库](https://github.com/zhangwendaisy/zhangwen06.github.io)。
+1. 打开 [GitHub 仓库](https://github.com/zhangwendaisy/zhangwendaisy.github.io)。
 2. 进入对应的 `data` 文件夹和 JSON 文件。
 3. 点击文件右上角的**铅笔图标（Edit）**。
 4. 用刚下载的 JSON 内容替换原内容。
@@ -147,7 +149,7 @@ README 只是使用说明。还需要在 GitHub 中确认 `tools/editor.html` �
 
 不会。中文版仍然使用：
 
-`https://zhangwendaisy.github.io/zhangwen06.github.io/tools/editor.html`
+`https://zhangwendaisy.github.io/tools/editor.html`
 
 **5. 上传新版压缩包会不会覆盖现在已经录入的成果？**
 
