@@ -1,55 +1,71 @@
-[README.md](https://github.com/user-attachments/files/35020852/README.md)
-# 张文老师学术主页｜运行与维护说明
+[README.md](https://github.com/user-attachments/files/35023058/README.md)
+# 张文老师学术主页 · 运行与维护
 
-**网站地址：** https://zhangwendaisy.github.io/zhangwen06.github.io/  
-**GitHub 仓库：** https://github.com/zhangwendaisy/zhangwen06.github.io
+网站地址：https://zhangwendaisy.github.io/zhangwen06.github.io/  
+GitHub 仓库：https://github.com/zhangwendaisy/zhangwen06.github.io
 
-## 1. 网站运行与发布
+## 1. 将新版网站发布到现有仓库
 
-1. 确认仓库根目录有 `index.html`、`assets/`、`data/`、`tools/` 和 `.nojekyll`。
-2. 在 GitHub 仓库进入 **Settings → Pages**。
-3. 在 **Build and deployment** 中设置：**Source = Deploy from a branch**、**Branch = main**、**Folder = /(root)**，点击 **Save**。
-4. 等待 GitHub Pages 完成部署后，打开上方网站地址。之后每次提交文件，网站都会重新部署；可以在 **Actions** 或 **Settings → Pages** 查看部署情况。
+1. 先在 GitHub 中备份现有仓库文件，尤其是 `data/works.json` 和 `data/profile.json`。
+2. 将本 ZIP 解压，打开解压后的文件夹；**上传里面的文件和文件夹到仓库根目录，不要把 ZIP 或外层文件夹直接上传**。
+3. 在现有仓库中覆盖同名文件，并补充新增的 `data/academic.json`：
+   - `index.html`
+   - `assets/styles.css`
+   - `assets/app.js`
+   - `data/profile.json`
+   - `data/works.json`
+   - `data/academic.json`（新版增加）
+   - `tools/editor.html`
+   - `README.md`
+4. 点击 **Commit changes** 保存。原仓库中已有的 `.github`、`.nojekyll`、`tools/check_updates.py` 可保留，不必反复上传。
+5. 确认仓库的 **Settings → Pages → Build and deployment** 为 `Deploy from a branch / main / (root)`。
+6. 等待部署完成，刷新网站；如看到旧版布局，按 `Ctrl + F5` 强制刷新。
 
-### 本地预览（可选）
+此版本保留了 26 篇论文及 8 项专利的原始数据。主页只展示用户指定的五类内容：个人信息与研究方向、专著、论文（期刊/会议分开）、竞赛奖项、学术服务。**专利数据仍在 `works.json` 中，不在此次主页上展示。**
 
-在解压后的项目文件夹打开终端，运行：
+## 2. 网站如何运行
+
+线上打开：https://zhangwendaisy.github.io/zhangwen06.github.io/
+
+如需在本地预览，在解压目录打开终端并执行：
 
 ```bash
 python -m http.server 8000
 ```
 
-浏览器访问 http://localhost:8000 。不要直接双击 `index.html` 预览，因为浏览器可能阻止本地 JSON 数据读取。
+浏览器访问 http://localhost:8000 。不要直接双击 `index.html`，否则浏览器可能阻止读取 JSON 数据。
 
-## 2. 新增、修改或删除论文及专利
+## 3. 新增或修改论文、专著、竞赛奖项及审稿人任职信息
 
-1. 打开 [成果录入工具](https://zhangwendaisy.github.io/zhangwen06.github.io/tools/editor.html)。
-2. 点击 **载入网站现有数据**，选择需要新增、修改或删除的成果。
-3. 填写并核对题名、作者、年份、刊物、DOI、文章链接或专利申请号等信息；有 DOI 的论文可以尝试自动补全题录。
-4. 点击 **下载更新后的 works.json**。
-5. 打开 GitHub 仓库中的 [`data/works.json`](https://github.com/zhangwendaisy/zhangwen06.github.io/blob/main/data/works.json)，点击右上角的 **Edit（铅笔图标）**，将文件全文替换成刚下载的 `works.json` 内容。
-6. 点击 **Commit changes** 提交。部署完成后刷新网站，检查成果是否正确显示。
+1. 打开英文成果编辑器：  
+   https://zhangwendaisy.github.io/zhangwen06.github.io/tools/editor.html
+2. 点击 **Load files from website**。
+3. 在 **Record type** 选择相应类别：
+   - **Journal article**：期刊论文
+   - **Conference paper**：会议论文
+   - **Book / monograph**：专著
+   - **Competition award**：竞赛奖项
+   - **Academic service / reviewer role**：学术任职、审稿人等
+4. 填写英文显示信息，并在保存前核实作者、年份、出处及链接。
+5. 点击 **Add record** 或 **Save changes**。
+6. 期刊论文、会议论文和专利：下载 `works.json`；专著、竞赛奖项、学术服务：下载 `academic.json`。
+7. 打开 GitHub 仓库对应的 `data/*.json`，点击铅笔图标，将文件全文替换为下载后的文件内容，再点击 **Commit changes**。
+8. GitHub Pages 部署完成后，网页会更新。论文在网页中自动按年份从新到旧排列。
 
-**注意：** 录入工具只在浏览器内编辑数据，不会自动写入 GitHub；必须提交 `data/works.json`，网站才会更新。修改前建议备份原文件。
+**注意：** 编辑器不会自动写入 GitHub；必须手动提交 JSON 才能公开更新。修改前请备份数据文件。
 
-## 3. 修改个人简介和研究方向
+## 4. 修改个人简介与研究方向
 
-在仓库中打开 [`data/profile.json`](https://github.com/zhangwendaisy/zhangwen06.github.io/blob/main/data/profile.json)，点击 **Edit** 修改，完成后点击 **Commit changes**。
+打开 `tools/editor.html` 中的 **Profile and research interests**，修改后点击 **Apply profile changes**、**Download profile.json**，再上传替换仓库的 `data/profile.json`。
 
-常用字段：
+也可以直接在 GitHub 打开 `data/profile.json` 编辑。网页会读取英文的 `name_en`、`institution_en`、`department_en`、`biography_en` 和 `research_interests_en` 等字段。
 
-- `name_zh` / `name_en`：中文名与英文名
-- `institution` / `department`：单位与院系
-- `research_interests`：研究方向
-- `email` / `orcid` / `scholar_url`：对外联系与学术主页链接
-- `website_note`：网站说明
+## 5. 日常维护检查
 
-## 4. 日常维护与检查
+- **论文未显示**：检查 `data/works.json` 的 JSON 格式、数据类型以及 `assets/app.js`。
+- **专著、奖项或审稿记录未显示**：检查 `data/academic.json`，确认 `books`、`awards`、`services` 数组已经添加记录。
+- **网站仍显示旧版**：查看 GitHub **Actions** / **Settings → Pages** 是否部署完成，之后按 `Ctrl + F5`。
+- **无法在本地打开数据**：用 `python -m http.server 8000` 预览。
+- **自动查新（可选）**：已有 `.github/workflows/weekly_check.yml` 时，可在填入老师本人确认的 ORCID 后，通过 Actions 生成候选论文报告，审核后再手动录入。
 
-- **成果不显示：** 检查 `data/works.json` 是否存在且为有效 JSON，确认 `assets/app.js` 已上传。
-- **网页样式异常：** 检查 `assets/styles.css` 是否存在。
-- **修改后没更新：** 先查看仓库 **Actions** 或 **Settings → Pages** 的部署状态，再强制刷新网页（Windows：`Ctrl + F5`）。
-- **需要修改网页布局：** 编辑 `index.html`；需要修改配色和排版：编辑 `assets/styles.css`。提交后自动重新部署。
-- **自动查新（可选）：** 如已上传 `.github/workflows/weekly_check.yml`，并在 `data/profile.json` 填入老师本人已确认的 ORCID，可以在 **Actions** 查看查新候选报告。查新不会自动发布成果，仍需人工审核并录入。
-
-公开仓库里的内容任何人都能看到，更新前请确认论文、专利及个人信息允许公开。
+发布前请确认所有个人信息、论文、奖项及学术任职资料可以对外公开。
