@@ -1,0 +1,33 @@
+name: Weekly paper discovery (review required)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * 1'  # 每周一 03:17 UTC，可手动调整
+
+permissions:
+  contents: read
+
+jobs:
+  check-publications:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover Crossref works by verified ORCID
+        run: python tools/check_updates.py
+      - name: Show report in workflow summary
+        if: always()
+        run: |
+          if [ -f auto_candidates.md ]; then
+            cat auto_candidates.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Save candidate report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-candidates
+          path: auto_candidates.md
+          if-no-files-found: warn
