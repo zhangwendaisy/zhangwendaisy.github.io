@@ -1,71 +1,162 @@
-[README.md](https://github.com/user-attachments/files/35023058/README.md)
-# 张文老师学术主页 · 运行与维护
+[Uploading README.md…]()
+# 张文老师学术主页 · 运行与维护说明
 
-网站地址：https://zhangwendaisy.github.io/zhangwen06.github.io/  
-GitHub 仓库：https://github.com/zhangwendaisy/zhangwen06.github.io
+网站地址：  
+https://zhangwendaisy.github.io/zhangwen06.github.io/
 
-## 1. 将新版网站发布到现有仓库
+GitHub 仓库：  
+https://github.com/zhangwendaisy/zhangwen06.github.io
 
-1. 先在 GitHub 中备份现有仓库文件，尤其是 `data/works.json` 和 `data/profile.json`。
-2. 将本 ZIP 解压，打开解压后的文件夹；**上传里面的文件和文件夹到仓库根目录，不要把 ZIP 或外层文件夹直接上传**。
-3. 在现有仓库中覆盖同名文件，并补充新增的 `data/academic.json`：
-   - `index.html`
-   - `assets/styles.css`
-   - `assets/app.js`
-   - `data/profile.json`
-   - `data/works.json`
-   - `data/academic.json`（新版增加）
-   - `tools/editor.html`
-   - `README.md`
-4. 点击 **Commit changes** 保存。原仓库中已有的 `.github`、`.nojekyll`、`tools/check_updates.py` 可保留，不必反复上传。
-5. 确认仓库的 **Settings → Pages → Build and deployment** 为 `Deploy from a branch / main / (root)`。
-6. 等待部署完成，刷新网站；如看到旧版布局，按 `Ctrl + F5` 强制刷新。
+## 1. 运行与发布
 
-此版本保留了 26 篇论文及 8 项专利的原始数据。主页只展示用户指定的五类内容：个人信息与研究方向、专著、论文（期刊/会议分开）、竞赛奖项、学术服务。**专利数据仍在 `works.json` 中，不在此次主页上展示。**
+### 在线访问
+网站通过 GitHub Pages 运行。只要仓库中保存了网页文件并启用了 Pages，就可以直接访问上面的网址。
 
-## 2. 网站如何运行
-
-线上打开：https://zhangwendaisy.github.io/zhangwen06.github.io/
-
-如需在本地预览，在解压目录打开终端并执行：
+### 本地预览
+如需在本地预览，在网站项目目录打开终端并执行：
 
 ```bash
 python -m http.server 8000
 ```
 
-浏览器访问 http://localhost:8000 。不要直接双击 `index.html`，否则浏览器可能阻止读取 JSON 数据。
+然后在浏览器打开：
 
-## 3. 新增或修改论文、专著、竞赛奖项及审稿人任职信息
+```text
+http://localhost:8000
+```
 
-1. 打开英文成果编辑器：  
-   https://zhangwendaisy.github.io/zhangwen06.github.io/tools/editor.html
-2. 点击 **Load files from website**。
-3. 在 **Record type** 选择相应类别：
-   - **Journal article**：期刊论文
-   - **Conference paper**：会议论文
-   - **Book / monograph**：专著
-   - **Competition award**：竞赛奖项
-   - **Academic service / reviewer role**：学术任职、审稿人等
-4. 填写英文显示信息，并在保存前核实作者、年份、出处及链接。
-5. 点击 **Add record** 或 **Save changes**。
-6. 期刊论文、会议论文和专利：下载 `works.json`；专著、竞赛奖项、学术服务：下载 `academic.json`。
-7. 打开 GitHub 仓库对应的 `data/*.json`，点击铅笔图标，将文件全文替换为下载后的文件内容，再点击 **Commit changes**。
-8. GitHub Pages 部署完成后，网页会更新。论文在网页中自动按年份从新到旧排列。
+不要直接双击 `index.html`，否则浏览器可能无法读取 `data/*.json` 数据文件。
 
-**注意：** 编辑器不会自动写入 GitHub；必须手动提交 JSON 才能公开更新。修改前请备份数据文件。
+### GitHub Pages 设置
+在仓库中进入：
 
-## 4. 修改个人简介与研究方向
+- `Settings`
+- `Pages`
 
-打开 `tools/editor.html` 中的 **Profile and research interests**，修改后点击 **Apply profile changes**、**Download profile.json**，再上传替换仓库的 `data/profile.json`。
+然后设置：
 
-也可以直接在 GitHub 打开 `data/profile.json` 编辑。网页会读取英文的 `name_en`、`institution_en`、`department_en`、`biography_en` 和 `research_interests_en` 等字段。
+- **Source**: `Deploy from a branch`
+- **Branch**: `main`
+- **Folder**: `/(root)`
 
-## 5. 日常维护检查
+保存后，GitHub 会自动发布网站。以后每次提交文件，网站都会自动重新部署。
 
-- **论文未显示**：检查 `data/works.json` 的 JSON 格式、数据类型以及 `assets/app.js`。
-- **专著、奖项或审稿记录未显示**：检查 `data/academic.json`，确认 `books`、`awards`、`services` 数组已经添加记录。
-- **网站仍显示旧版**：查看 GitHub **Actions** / **Settings → Pages** 是否部署完成，之后按 `Ctrl + F5`。
-- **无法在本地打开数据**：用 `python -m http.server 8000` 预览。
-- **自动查新（可选）**：已有 `.github/workflows/weekly_check.yml` 时，可在填入老师本人确认的 ORCID 后，通过 Actions 生成候选论文报告，审核后再手动录入。
+## 2. 网站主要文件
 
-发布前请确认所有个人信息、论文、奖项及学术任职资料可以对外公开。
+- `index.html`：主页结构
+- `assets/styles.css`：网页样式
+- `assets/app.js`：前端数据读取与页面渲染
+- `data/profile.json`：个人简介、研究方向、邮箱、头像等
+- `data/works.json`：论文与专利数据
+- `data/academic.json`：专著、竞赛奖项、学术服务等
+- `tools/editor.html`：浏览器端维护工具
+
+## 3. 如何维护网站内容
+
+打开维护工具：
+
+```text
+https://zhangwendaisy.github.io/zhangwen06.github.io/tools/editor.html
+```
+
+### 3.1 修改个人简介
+在编辑器中可修改：
+
+- 英文名 / 中文名
+- 职称
+- 单位与院系
+- 个人简介
+- 联系邮箱
+- Google Scholar / ORCID / 个人主页链接
+- 研究方向
+- 个人照片
+
+修改完成后点击：
+
+- **Apply profile changes**
+- **Download profile.json**
+
+然后到 GitHub 仓库中替换 `data/profile.json` 的内容并提交。
+
+### 3.2 新增或修改论文
+在编辑器中选择：
+
+- `Journal article`
+- `Conference paper`
+
+填写标题、作者、年份、期刊 / 会议名称、DOI、链接等信息。  
+保存后下载：
+
+- `works.json`
+
+再到 GitHub 仓库中替换 `data/works.json` 并提交。
+
+网页会自动把：
+
+- 期刊论文
+- 会议论文
+
+分别显示，并按年份从新到旧排序。
+
+### 3.3 新增或修改专著
+在编辑器中选择：
+
+- `Book / monograph`
+
+可以填写：
+
+- 专著题名
+- 作者
+- 出版社
+- 出版年份
+- 外部链接
+- 封面图片
+
+专著封面支持两种方式：
+
+1. 填写图片 URL
+2. 直接上传本地图片（编辑器会把图片写入 `academic.json`）
+
+保存后下载：
+
+- `academic.json`
+
+再到 GitHub 仓库中替换 `data/academic.json` 并提交。
+
+### 3.4 新增或修改竞赛奖项
+在编辑器中选择：
+
+- `Competition award`
+
+填写奖项名称、赛事名称、年份、说明等。  
+保存后下载 `academic.json`，替换 GitHub 中对应文件并提交。
+
+### 3.5 新增或修改学术服务 / 审稿人任职
+在编辑器中选择：
+
+- `Academic service`
+
+填写任职名称、服务机构、年份或时间段、说明等。  
+保存后下载 `academic.json`，替换 GitHub 中对应文件并提交。
+
+### 3.6 专利数据
+专利保存在 `data/works.json` 中。  
+编辑器支持录入专利，但当前主页默认不展示专利板块；数据保留在后台文件中，后续如需展示可再调整页面。
+
+## 4. 每次更新后的操作
+
+每次在编辑器中改完数据后，需要：
+
+1. 下载更新后的 JSON 文件
+2. 打开 GitHub 仓库中的对应文件
+3. 点击右上角铅笔图标进行编辑
+4. 用下载文件的内容替换原内容
+5. 点击 **Commit changes**
+6. 等待 GitHub Pages 自动部署
+7. 刷新网站查看结果（如有缓存，可按 `Ctrl + F5`）
+
+## 5. 注意事项
+
+- 编辑器只是浏览器内工具，不会自动把数据写入 GitHub。
+- 任何公开到网站上的邮箱、照片、论文、奖项和任职信息，都应事先确认可以公开。
+- 若页面未更新，请先检查 GitHub Pages 是否部署完成，再强制刷新浏览器。
