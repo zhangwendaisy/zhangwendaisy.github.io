@@ -19,9 +19,12 @@ const safeYear = (value) => {
   return Number.isInteger(n) && n >= 1900 && n <= 2100 ? n : null;
 };
 const yearDesc = (a, b) => (safeYear(b.year) || 0) - (safeYear(a.year) || 0) || String(a.title||"").localeCompare(String(b.title||""), "en");
+// Automatically emphasize Zhang Wen in Chinese and common English author formats.
+// Do not infer identity from an ambiguous initial, such as "W. Zhang".
+const authorNamePattern = /张\s*文|(?<![A-Za-z])(?:Wen[\s,，·-]+Zhang|Zhang[\s,，·-]+Wen)(?![A-Za-z])/gi;
 const emphasizeAuthor = (value) => escapeHTML(value).replace(
-  /张文|(?<![A-Za-z])(?:Wen\s+Zhang|Zhang\s*,?\s+Wen)(?![A-Za-z])/gi,
-  (match) => `<span class="person-highlight">${match}</span>`
+  authorNamePattern,
+  (match) => `<strong class="person-highlight">${match}</strong>`
 );
 const doiFromMetadata = (item) => {
   const raw = String(item.doi || "");
@@ -71,7 +74,7 @@ function renderPaper(item){
   return `<li>
     <div class="publication-title">${escapeHTML(item.title || "Untitled")}${year ? ` <span class="publication-year">(${year})</span>` : ""}</div>
     ${item.authors ? `<div class="publication-authors">${emphasizeAuthor(item.authors)}</div>` : ""}
-    ${item.publication ? `<div class="publication-venue">${escapeHTML(item.publication)}</div>` : ""}
+    ${item.publication ? `<div class="publication-venue">${emphasizeAuthor(item.publication)}</div>` : ""}
     <div class="publication-actions">${links.join("")}</div>
   </li>`;
 }
