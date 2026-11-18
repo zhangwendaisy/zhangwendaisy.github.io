@@ -1,121 +1,78 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic homepage of Zhang Wen: research interests, books, journal articles, conference papers, awards and academic service.">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="张文学术主页：研究方向、学术论文和专利成果。">
-  <title>张文 · 学术主页 | Zhang Wen</title>
+  <title>Zhang Wen | Academic Homepage</title>
   <link rel="stylesheet" href="./assets/styles.css">
-  <script src="./assets/app.js" defer></script>
+  <script defer src="./assets/app.js"></script>
 </head>
 <body>
-  <header class="masthead">
-    <div class="layout nav">
-      <a class="mark" href="#home" aria-label="返回首页">
-        <span class="monogram">ZW</span><span class="brand-name">ZHANG WEN <small>ACADEMIC PROFILE</small></span>
-      </a>
-      <nav class="nav-links" aria-label="主导航">
-        <a href="#research">研究方向</a>
-        <a href="#works">学术成果</a>
-        <a href="#contact">联系信息</a>
+  <div class="page">
+    <header class="site-header" id="about">
+      <div class="identity">
+        <h1 id="person-name">Zhang Wen <span class="native-name">(张文)</span></h1>
+        <p class="affiliation" id="affiliation">National University of Defense Technology</p>
+        <p class="department" id="department">College of Meteorology and Oceanography</p>
+        <p class="biography" id="biography"></p>
+        <p class="contact-links" id="contact-links"></p>
+      </div>
+      <nav class="main-nav" aria-label="Section navigation">
+        <a href="#research">Research Interests</a>
+        <a href="#books">Books</a>
+        <a href="#publications">Publications</a>
+        <a href="#awards">Competition Awards</a>
+        <a href="#service">Academic Service</a>
       </nav>
-      <a class="nav-edit" href="./tools/editor.html">维护成果 <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="layout hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="tiny-rule"></span> NATIONAL UNIVERSITY OF DEFENSE TECHNOLOGY</p>
-          <p class="hero-type">ACADEMIC PROFILE / 学术主页</p>
-          <h1 id="profile-name">张文 <span>Zhang Wen</span></h1>
-          <p class="affiliation" id="profile-institution">国防科技大学 · 气象海洋学院</p>
-          <p class="intro">专注水声信号处理与智能声纳相关研究。汇集公开发表的学术成果，提供检索、筛选及原文查询入口。</p>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#works">查看科研成果 <span>↗</span></a>
-            <a class="secondary-btn" href="#research">研究方向</a>
-          </div>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="art-grid"></div>
-          <div class="ring ring-a"></div><div class="ring ring-b"></div><div class="ring ring-c"></div>
-          <div class="ring-center"></div>
-          <div class="point point-a"></div><div class="point point-b"></div><div class="point point-c"></div>
-          <div class="crosshair crosshair-a">+</div><div class="crosshair crosshair-b">+</div>
-          <div class="art-coordinates">ACOUSTIC MODELLING / ARRAY SIGNAL PROCESSING</div>
-          <div class="art-caption">SIGNAL · MODEL · INFERENCE</div>
-        </div>
-      </div>
-    </section>
+    <main>
+      <section class="content-section" id="research">
+        <h2>Research Interests</h2>
+        <ul class="interest-list" id="interest-list">
+          <li>Underwater acoustic signal processing</li>
+          <li>Sonar sensing and acoustic source localization</li>
+        </ul>
+      </section>
 
-    <section class="metrics">
-      <div class="layout metric-grid">
-        <div class="metric"><strong id="count-all">—</strong><span>成果条目</span></div>
-        <div class="metric"><strong id="count-papers">—</strong><span>学术论文</span></div>
-        <div class="metric"><strong id="count-patents">—</strong><span>专利成果</span></div>
-        <div class="metric"><strong id="count-categories">—</strong><span>研究类别</span></div>
-      </div>
-    </section>
+      <section class="content-section" id="books">
+        <h2>Books &amp; Monographs</h2>
+        <ol id="book-list" class="publication-list"></ol>
+        <p id="book-empty" class="empty-note" hidden>No verified book or monograph entries have been added yet.</p>
+      </section>
 
-    <section id="research" class="section research-section">
-      <div class="layout">
-        <div class="section-head">
-          <div><p class="section-index">01 / RESEARCH</p><h2>研究方向 <em>Research interests</em></h2></div>
-          <p class="section-side">聚焦水声环境中的信号分析、感知、定位与智能处理。</p>
-        </div>
-        <div class="interest-grid" id="interest-grid"></div>
-      </div>
-    </section>
+      <section class="content-section" id="publications">
+        <h2>Publications</h2>
+        <p class="section-intro">Publications are listed by year, from newest to oldest, within each category. Original publication titles are retained.</p>
+        <h3 id="journals">Journal Articles <span class="count" id="journal-count"></span></h3>
+        <ol id="journal-list" class="publication-list"></ol>
+        <p id="journal-empty" class="empty-note" hidden>No journal articles have been added.</p>
 
-    <section id="works" class="section works-section">
-      <div class="layout">
-        <div class="section-head">
-          <div><p class="section-index">02 / PUBLICATIONS & PATENTS</p><h2>学术成果 <em>Selected records</em></h2></div>
-          <p class="section-side">支持按关键词、成果类型及年份筛选，按记录维护更新。</p>
-        </div>
-        <div class="toolstrip">
-          <div class="tabs" role="group" aria-label="成果类型">
-            <button class="tab active" data-type="全部" type="button">全部成果</button>
-            <button class="tab" data-type="期刊论文" type="button">期刊论文</button>
-            <button class="tab" data-type="会议论文" type="button">会议论文</button>
-            <button class="tab" data-type="专利" type="button">专利成果</button>
-          </div>
-          <div class="filters">
-            <label class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="搜索题名、作者或关键词" aria-label="搜索成果"></label>
-            <label class="select-wrap"><span>年份</span><select id="year-filter"><option value="全部">全部年份</option></select></label>
-            <label class="select-wrap"><span>类别</span><select id="category-filter"><option value="全部">全部类别</option></select></label>
-          </div>
-        </div>
-        <div class="list-meta"><span id="result-count">正在加载...</span><span>作者署名中的“张文 / Zhang Wen / Wen Zhang”自动突出显示</span></div>
-        <div id="works-list" class="works-list" aria-live="polite"></div>
-        <div class="load-more-wrap"><button id="load-more" class="load-more" type="button" hidden>查看更多成果 ↓</button></div>
-      </div>
-    </section>
+        <h3 id="conferences" class="subsection">Conference Papers <span class="count" id="conference-count"></span></h3>
+        <ol id="conference-list" class="publication-list"></ol>
+        <p id="conference-empty" class="empty-note" hidden>No conference papers have been added.</p>
+      </section>
 
-    <section id="contact" class="section contact-section">
-      <div class="layout contact-grid">
-        <div>
-          <p class="section-index">03 / INFORMATION</p>
-          <h2>学术联系 <em>Get in touch</em></h2>
-          <p id="profile-note" class="soft-copy"></p>
-        </div>
-        <div class="contact-panel">
-          <p><span>机构</span><strong id="contact-institution">国防科技大学</strong></p>
-          <p id="contact-email" hidden><span>邮箱</span><a id="contact-email-link"></a></p>
-          <p id="contact-orcid" hidden><span>ORCID</span><a id="contact-orcid-link" target="_blank" rel="noopener noreferrer"></a></p>
-          <p id="contact-scholar" hidden><span>Scholar</span><a id="contact-scholar-link" target="_blank" rel="noopener noreferrer">学术主页 ↗</a></p>
-        </div>
-      </div>
-    </section>
-  </main>
+      <section class="content-section" id="awards">
+        <h2>Competition Awards</h2>
+        <ol id="award-list" class="publication-list"></ol>
+        <p id="award-empty" class="empty-note" hidden>No verified competition awards have been added yet.</p>
+      </section>
 
-  <footer class="footer">
-    <div class="layout footer-content">
-      <div><strong>ZW / ACADEMIC</strong><p>© <span id="this-year"></span> 张文 · 学术成果展示</p></div>
-      <p>由 GitHub Pages 托管 · 内容以正式出版记录为准<br><a href="./tools/editor.html">成果录入工具</a> · <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>
-    </div>
-  </footer>
+      <section class="content-section" id="service">
+        <h2>Academic Service</h2>
+        <p class="section-intro">Editorial responsibilities, peer-review service, committee roles and other academic appointments.</p>
+        <ul id="service-list" class="service-list"></ul>
+        <p id="service-empty" class="empty-note" hidden>No verified academic service entries have been added yet.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Academic homepage of Zhang Wen</span>
+      <span><a href="./tools/editor.html">Manage records</a> · Hosted on GitHub Pages</span>
+    </footer>
+  </div>
 </body>
 </html>
