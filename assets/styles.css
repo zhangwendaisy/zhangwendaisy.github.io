@@ -1,0 +1,99 @@
+/* Minimal academic CV layout inspired by traditional university publication pages. */
+:root {
+  --text: #242b32;
+  --secondary: #57616b;
+  --blue: #175c87;
+  --blue-hover: #0d3f63;
+  --line: #dce2e7;
+  --light: #f5f7f8;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--text);
+  font: 15px/1.68 Arial, Helvetica, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.page { width: min(930px, calc(100% - 64px)); margin: 0 auto; }
+a { color: var(--blue); text-decoration: none; }
+a:hover, a:focus-visible { color: var(--blue-hover); text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.site-header { padding-top: 58px; }
+.identity h1 {
+  font-size: 32px; font-weight: 700; letter-spacing: -.5px;
+  line-height: 1.28; margin: 0 0 10px;
+}
+.native-name { font-size: 19px; font-weight: 400; color: var(--secondary); letter-spacing: 0; }
+.affiliation, .department { margin: 2px 0; color: var(--secondary); }
+.affiliation { font-size: 15px; font-weight: 600; color: #37424c; }
+.biography { margin: 20px 0 8px; max-width: 800px; }
+.contact-links { margin: 10px 0 24px; font-size: 14px; }
+.main-nav {
+  display: flex; flex-wrap: wrap; align-items: center;
+  column-gap: 27px; row-gap: 8px;
+  padding: 14px 0 15px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  font-size: 13px; font-weight: 600;
+}
+.content-section { padding: 33px 0 6px; scroll-margin-top: 20px; }
+.content-section h2 {
+  font-family: Georgia, "Times New Roman", "SimSun", serif;
+  font-weight: 700; font-size: 23px; letter-spacing: -.15px;
+  line-height: 1.3; margin: 0 0 15px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.content-section h3 {
+  font: 700 18px/1.45 Georgia, "Times New Roman", "SimSun", serif;
+  margin: 21px 0 8px;
+}
+.content-section h3.subsection { margin-top: 29px; }
+.count {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px; font-weight: 400; margin-left: 5px; color: #87929b;
+}
+.section-intro { color: var(--secondary); font-size: 13px; margin: 4px 0 12px; }
+.interest-list { margin: 0; padding-left: 25px; }
+.interest-list li { margin: 5px 0; padding-left: 1px; }
+.publication-list { margin: 4px 0 7px; padding-left: 28px; }
+.publication-list > li { padding-left: 5px; margin: 0 0 18px; }
+.publication-list > li::marker { color: #596a75; font-weight: 600; font-size: 13px; }
+.publication-title {
+  font-weight: 600; color: #263a46; font-size: 14.5px; line-height: 1.55;
+  margin: 0 0 3px;
+}
+.publication-authors { color: #35434c; font-size: 13.5px; margin: 1px 0; line-height: 1.6; }
+.person-highlight { font-weight: 700; color: #152935; }
+.publication-venue { font-size: 13.5px; margin: 3px 0; color: #53626b; }
+.publication-year { color: #747f88; white-space: nowrap; }
+.publication-actions { margin: 4px 0 0; font-size: 12px; }
+.publication-actions a:not(:last-child) { margin-right: 14px; }
+.empty-note { margin: 5px 0 17px 0; font-size: 13.5px; color: #78848d; font-style: italic; }
+.service-list { margin: 3px 0; padding-left: 24px; }
+.service-list li { margin-bottom: 13px; }
+.site-footer {
+  margin-top: 45px; padding: 18px 0 31px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; gap: 20px;
+  color: #7b858d; font-size: 11.5px;
+}
+@media (max-width: 700px) {
+  .page { width: calc(100% - 34px); }
+  .site-header { padding-top: 35px; }
+  .identity h1 { font-size: 29px; }
+  .main-nav { column-gap: 18px; font-size: 12.5px; }
+  .content-section { padding-top: 29px; }
+  .content-section h2 { font-size: 21px; }
+  .publication-list { padding-left: 23px; }
+  .publication-list > li { padding-left: 3px; }
+  .site-footer { display: block; }
+  .site-footer span { display: block; margin-bottom: 6px; }
+}
+@media print {
+  @page { margin: 19mm; }
+  body { font-size: 11pt; }
+  .page { width: 100%; }
+  .site-header { padding-top: 0; }
+  .main-nav, .publication-actions, .site-footer a { display: none; }
+  .content-section { break-inside: auto; padding-top: 20px; }
+  .publication-list > li { break-inside: avoid; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
