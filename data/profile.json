@@ -16,5 +16,15 @@
     "水声信号处理与声学反演"
   ],
   "website_note": "展示信息由学术团队维护。初始成果依据提供的 Word 汇编录入，正式引用请核对原文。",
-  "last_reviewed": ""
+  "last_reviewed": "",
+  "institution_en": "National University of Defense Technology",
+  "department_en": "College of Meteorology and Oceanography",
+  "biography_en": "Research interests include underwater acoustic signal processing, sonar sensing, source localization, and machine-learning methods for acoustic target recognition.",
+  "research_interests_en": [
+    "Array signal processing and direction-of-arrival estimation",
+    "Underwater acoustic target recognition",
+    "Target tracking and source localization",
+    "Intelligent sonar and machine learning",
+    "Underwater signal processing and acoustic inversion"
+  ]
 }
