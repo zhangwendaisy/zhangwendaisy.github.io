@@ -1,99 +1,205 @@
-/* Minimal academic CV layout inspired by traditional university publication pages. */
-:root {
-  --text: #242b32;
-  --secondary: #57616b;
-  --blue: #175c87;
-  --blue-hover: #0d3f63;
-  --line: #dce2e7;
-  --light: #f5f7f8;
+/* Academic homepage style inspired by classic faculty pages. */
+:root{
+  --text:#202a34;
+  --muted:#566371;
+  --link:#2347b7;
+  --border:#bcc7d5;
+  --panel:#ffffff;
+  --panelbg:#f5f5f5;
+  --line:#d7dfe7;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: #fff;
-  color: var(--text);
-  font: 15px/1.68 Arial, Helvetica, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#eeeeee;
+  color:var(--text);
+  font:14px/1.55 Georgia, "Times New Roman", "SimSun", serif;
 }
-.page { width: min(930px, calc(100% - 64px)); margin: 0 auto; }
-a { color: var(--blue); text-decoration: none; }
-a:hover, a:focus-visible { color: var(--blue-hover); text-decoration: underline; }
-a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
-.site-header { padding-top: 58px; }
-.identity h1 {
-  font-size: 32px; font-weight: 700; letter-spacing: -.5px;
-  line-height: 1.28; margin: 0 0 10px;
+a{color:var(--link); text-decoration:none}
+a:hover{text-decoration:underline}
+.page-shell{padding:34px 10px 45px}
+.page-card{
+  width:min(980px, calc(100vw - 20px));
+  margin:0 auto;
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow:0 0 3px rgba(0,0,0,.08);
+  padding:14px 18px 22px;
 }
-.native-name { font-size: 19px; font-weight: 400; color: var(--secondary); letter-spacing: 0; }
-.affiliation, .department { margin: 2px 0; color: var(--secondary); }
-.affiliation { font-size: 15px; font-weight: 600; color: #37424c; }
-.biography { margin: 20px 0 8px; max-width: 800px; }
-.contact-links { margin: 10px 0 24px; font-size: 14px; }
-.main-nav {
-  display: flex; flex-wrap: wrap; align-items: center;
-  column-gap: 27px; row-gap: 8px;
-  padding: 14px 0 15px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  font-size: 13px; font-weight: 600;
+.top-profile{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:16px;
+  align-items:start;
+  padding:2px 4px 12px;
 }
-.content-section { padding: 33px 0 6px; scroll-margin-top: 20px; }
-.content-section h2 {
-  font-family: Georgia, "Times New Roman", "SimSun", serif;
-  font-weight: 700; font-size: 23px; letter-spacing: -.15px;
-  line-height: 1.3; margin: 0 0 15px; padding-bottom: 8px;
-  border-bottom: 1px solid var(--line);
+.profile-photo-wrap{
+  width:120px;
 }
-.content-section h3 {
-  font: 700 18px/1.45 Georgia, "Times New Roman", "SimSun", serif;
-  margin: 21px 0 8px;
+.profile-photo{
+  width:110px;
+  height:130px;
+  object-fit:cover;
+  border:1px solid var(--border);
+  display:block;
+  background:#f7f9fb;
 }
-.content-section h3.subsection { margin-top: 29px; }
-.count {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px; font-weight: 400; margin-left: 5px; color: #87929b;
+.profile-main h1{
+  margin:0 0 2px;
+  font-size:26px;
+  line-height:1.2;
+  color:#2b49b6;
 }
-.section-intro { color: var(--secondary); font-size: 13px; margin: 4px 0 12px; }
-.interest-list { margin: 0; padding-left: 25px; }
-.interest-list li { margin: 5px 0; padding-left: 1px; }
-.publication-list { margin: 4px 0 7px; padding-left: 28px; }
-.publication-list > li { padding-left: 5px; margin: 0 0 18px; }
-.publication-list > li::marker { color: #596a75; font-weight: 600; font-size: 13px; }
-.publication-title {
-  font-weight: 600; color: #263a46; font-size: 14.5px; line-height: 1.55;
-  margin: 0 0 3px;
+.native-name{
+  font-size:18px;
+  font-weight:normal;
 }
-.publication-authors { color: #35434c; font-size: 13.5px; margin: 1px 0; line-height: 1.6; }
-.person-highlight { font-weight: 700; color: #152935; }
-.publication-venue { font-size: 13.5px; margin: 3px 0; color: #53626b; }
-.publication-year { color: #747f88; white-space: nowrap; }
-.publication-actions { margin: 4px 0 0; font-size: 12px; }
-.publication-actions a:not(:last-child) { margin-right: 14px; }
-.empty-note { margin: 5px 0 17px 0; font-size: 13.5px; color: #78848d; font-style: italic; }
-.service-list { margin: 3px 0; padding-left: 24px; }
-.service-list li { margin-bottom: 13px; }
-.site-footer {
-  margin-top: 45px; padding: 18px 0 31px; border-top: 1px solid var(--line);
-  display: flex; justify-content: space-between; gap: 20px;
-  color: #7b858d; font-size: 11.5px;
+.title-line,.affiliation,.department,.contact-line,.biography,.contact-links{
+  margin:2px 0;
 }
-@media (max-width: 700px) {
-  .page { width: calc(100% - 34px); }
-  .site-header { padding-top: 35px; }
-  .identity h1 { font-size: 29px; }
-  .main-nav { column-gap: 18px; font-size: 12.5px; }
-  .content-section { padding-top: 29px; }
-  .content-section h2 { font-size: 21px; }
-  .publication-list { padding-left: 23px; }
-  .publication-list > li { padding-left: 3px; }
-  .site-footer { display: block; }
-  .site-footer span { display: block; margin-bottom: 6px; }
+.title-line{font-style:italic}
+.affiliation{font-weight:bold;color:#3040a5}
+.contact-links, .quick-nav{font-size:14px}
+.biography{margin-top:8px}
+.quick-nav{
+  margin-top:6px;
 }
-@media print {
-  @page { margin: 19mm; }
-  body { font-size: 11pt; }
-  .page { width: 100%; }
-  .site-header { padding-top: 0; }
-  .main-nav, .publication-actions, .site-footer a { display: none; }
-  .content-section { break-inside: auto; padding-top: 20px; }
-  .publication-list > li { break-inside: avoid; }
+.quick-nav a:not(:last-child)::after,
+.contact-links a:not(:last-child)::after{
+  content:" | ";
+  color:#777;
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.content-block{
+  border:1px solid var(--border);
+  margin-top:14px;
+  background:#fff;
+}
+.content-block h2{
+  margin:0;
+  padding:7px 10px;
+  font-size:18px;
+  color:#2247b5;
+  border-bottom:1px solid var(--border);
+  background:#fbfbfb;
+}
+.section-content{padding:10px}
+.sub-block + .sub-block{
+  margin-top:18px;
+}
+.sub-block h3{
+  margin:0 0 8px;
+  font-size:16px;
+  color:#21344d;
+  border-bottom:1px dotted var(--line);
+  padding-bottom:4px;
+}
+.count{font-size:13px; color:var(--muted)}
+.interest-list{
+  margin:0 0 0 18px;
+}
+.interest-list li{
+  margin:4px 0;
+}
+.book-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+  gap:16px 18px;
+  margin-bottom:10px;
+}
+.book-card{
+  text-align:center;
+}
+.book-cover-wrap{
+  border:1px solid var(--border);
+  background:#fff;
+  height:218px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.book-cover{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.book-year{
+  margin:6px 0 0;
+  font-size:13px;
+}
+.book-title{
+  margin:2px 0 0;
+  font-size:13px;
+  line-height:1.35;
+}
+.book-detail-list{
+  margin:12px 0 0 18px;
+  padding-left:18px;
+}
+.book-detail-list li{
+  margin:8px 0;
+}
+.publication-list{
+  margin:0 0 0 18px;
+  padding-left:18px;
+}
+.publication-list li{
+  margin:10px 0 14px;
+}
+.publication-title{
+  font-weight:bold;
+  line-height:1.45;
+}
+.publication-authors,
+.publication-venue,
+.publication-actions{
+  margin-top:3px;
+}
+.publication-actions a{
+  margin-right:8px;
+}
+.person-highlight{
+  font-weight:bold;
+}
+.publication-year{
+  color:#666;
+}
+.empty-note{
+  margin:0;
+  font-style:italic;
+  color:#6c7785;
+}
+.service-list{
+  margin:0 0 0 18px;
+  padding-left:18px;
+}
+.service-list li{
+  margin:6px 0 10px;
+}
+.site-footer{
+  margin-top:18px;
+  padding-top:10px;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  color:#6a7480;
+  font-size:12px;
+}
+@media (max-width: 680px){
+  .page-card{padding:12px}
+  .top-profile{grid-template-columns:1fr}
+  .profile-photo-wrap{width:auto}
+  .profile-photo{width:120px; height:145px}
+  .page-shell{padding:12px 6px 24px}
+  .site-footer{display:block}
+  .site-footer span{display:block; margin:3px 0}
+}
+@media print{
+  @page{margin:16mm}
+  body{background:#fff}
+  .page-shell{padding:0}
+  .page-card{width:100%; border:none; box-shadow:none; padding:0}
+  .quick-nav, .site-footer a, .publication-actions, .contact-links{display:none}
+}
