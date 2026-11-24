@@ -98,20 +98,6 @@
     "verified": false
   },
   {
-    "id": "paper-008",
-    "type": "会议论文",
-    "category": "目标识别",
-    "title": "Surface and Underwater Acoustic Source Recognition Using Array Feature Extraction Based on Machine Learning",
-    "authors": "Yu Qiankun; Zhang Wen; Zhu Min; Shi Jian; Liu Yan; Liu Shuo",
-    "year": 2024,
-    "publication": "2023 International Conference on Frontiers of Ocean Science and Technology, ICFOST 2023. 2024",
-    "doi": "",
-    "url": "",
-    "description": "本文提出了一种基于阵列特征提取的机器学习方法。首先，根据SACLANT 1993的实验环境，基于KRAKEN生成仿真数据。其次，利用仿真数据和实验数据提取阵列特征。再次，对GBDT分类器在3个不同频段的精准度、召回率、F1和准确率进行了评估。结果表明，利用阵列特征提取方法建立的训练模型能有效解决单通道分类中部分通道准确率较差的问题，并获得了较好的实验精度。",
-    "source": "用户提供的张文老师成果Word",
-    "verified": false
-  },
-  {
     "id": "paper-009",
     "type": "会议论文",
     "category": "目标识别",
@@ -492,5 +478,35 @@
     "verified": false,
     "application_no": "",
     "image_url": ""
+  },
+  {
+    "id": "paper-008",
+    "type": "会议论文",
+    "category": "目标识别",
+    "title": "Surface and Underwater Acoustic Source Recognition Using Array Feature Extraction Based on Machine Learning",
+    "authors": "Yu Qiankun; Zhang Wen; Zhu Min; Shi Jian; Liu Yan; Liu Shuo",
+    "year": 2024,
+    "publication": "2023 International Conference on Frontiers of Ocean Science and Technology, ICFOST 2023. 2024",
+    "doi": "",
+    "url": "",
+    "description": "本文提出了一种基于阵列特征提取的机器学习方法。首先，根据SACLANT 1993的实验环境，基于KRAKEN生成仿真数据。其次，利用仿真数据和实验数据提取阵列特征。再次，对GBDT分类器在3个不同频段的精准度、召回率、F1和准确率进行了评估。结果表明，利用阵列特征提取方法建立的训练模型能有效解决单通道分类中部分通道准确率较差的问题，并获得了较好的实验精度。",
+    "source": "用户提供的张文老师成果Word",
+    "verified": false,
+    "application_no": "",
+    "image_url": ""
+  },
+  {
+    "id": "entry-mwujl0rp",
+    "title": "Analysis of the Adaptability and Application of Matched-Field Processors for Stationary and Maneuvering Targets in Shallow Water",
+    "authors": "Zikun Meng , Wen Zhang , Jian Shi, Shuo Liu and Qiankun Yu",
+    "year": 2026,
+    "publication": "Journal of Marine Science and Engineering",
+    "doi": "10.3390/jmse14141259",
+    "url": "",
+    "category": "目标定位",
+    "application_no": "",
+    "description": "本文基于Elba-93海试数据，比较五种匹配场处理器。结果表明：静止目标且环境失配严重时，Bartlett与MVDR更稳健；机动目标快拍不足时，MUSIC易出现轨迹跳变，MVDR跟踪最稳定、误差最低，RCM则兼顾鲁棒性与计算效率",
+    "image_url": "",
+    "type": "期刊论文"
   }
 ]
