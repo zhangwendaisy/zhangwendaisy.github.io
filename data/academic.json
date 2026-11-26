@@ -1,5 +1,111 @@
 {
   "books": [],
-  "awards": [],
+  "awards": [
+    {
+      "id": "entry-mwxhdbnd",
+      "title": "中国国际大学生创新大赛 国家级金奖",
+      "authors": "",
+      "year": 2023,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "证书编号：20230137Z",
+      "image_url": ""
+    },
+    {
+      "id": "entry-mwxha7ma",
+      "title": "全国大学生物理实验竞赛 国家级一等奖",
+      "authors": "张文 赵云 刘硕 李博 李衡 罗欣宜 倪昊",
+      "year": 2022,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "证书编号：22WLSYCX-P-0047",
+      "image_url": ""
+    },
+    {
+      "id": "entry-mwxherxt",
+      "title": "第十六届大学生创新年会",
+      "authors": "",
+      "year": 2023,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "",
+      "image_url": ""
+    },
+    {
+      "id": "entry-mwxhg9v3",
+      "title": "第六届国防科技大学“互联网+”大学生创新创业大赛",
+      "authors": "",
+      "year": 2023,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "",
+      "image_url": ""
+    },
+    {
+      "id": "entry-mwxhfpa7",
+      "title": "国防科技大学物理实验竞赛（创新赛）暨全国大学生物理实验竞赛校级选拔赛 一等奖",
+      "authors": "",
+      "year": 2022,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "",
+      "image_url": ""
+    },
+    {
+      "id": "entry-mwxhf76w",
+      "title": "湖南省第九届“互联网+”大学生创新创业大赛 省级一等奖",
+      "authors": "",
+      "year": 2023,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "",
+      "image_url": ""
+    },
+    {
+      "id": "entry-mwxhicih",
+      "title": "中国国际大学生创新大赛研究生组金奖",
+      "authors": "",
+      "year": 2024,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "",
+      "image_url": ""
+    },
+    {
+      "id": "entry-mwxhit93",
+      "title": "第八届全军军事建模竞赛二等奖",
+      "authors": "",
+      "year": 2024,
+      "publication": "",
+      "doi": "",
+      "url": "",
+      "category": "",
+      "application_no": "",
+      "description": "",
+      "image_url": ""
+    }
+  ],
   "services": []
 }
+
